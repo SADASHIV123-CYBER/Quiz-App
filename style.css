@@ -1,84 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Caveat:wght@400..700&family=Cedarville+Cursive&family=Orbitron:wght@400..900&display=swap');
-
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    font-family: "Orbitron", sans-serif;
-    /* color: #fff; */
-    background-color: #212121;
+body {
+  font-family: "Orbitron", sans-serif;
+  background: linear-gradient(135deg, #1a1a40, #0f2027, #2c5364);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .app {
-    background-color: #fff;
-    width: 100%;
-    max-width: 700px;
-    padding: 30px;
-    margin: 100px auto 0;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 25px;
+  padding: 40px;
+  max-width: 750px;
+  width: 100%;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.08);
+  animation: fadeInUp 0.9s ease;
+}
 
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .app h1 {
-    text-align: center;
-    font-size: 25px;
-    color: #001e4d;
-    font-weight: 500;
-    padding: 10px;
-    border-bottom: 1px solid #333;
-}
-
-.quiz {
-    padding: 20px 0;
+  font-size: 36px;
+  text-align: center;
+  color: #ffffff;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 15px #ff6ec4;
 }
 
 .quiz h2 {
-    color: #001e4d;
-    font-weight: 500;
-    font-size: 18px;
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ffe2ff;
+  text-shadow: 0 0 5px #ff84d7;
 }
 
 .btn {
-    background-color: #fff;
-    color: #222;
-    font-weight: 500;
-    font-size: 20px;
-    width: 100%;
-    border: 1px solid #222;
-    padding: 10px;
-    margin: 10px 0;
-    text-align: left;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.5s;
+  background: linear-gradient(to right, #f093fb, #f5576c);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 16px 20px;
+  font-size: 18px;
+  width: 100%;
+  margin: 12px 0;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 .btn:hover:not([disabled]) {
-    background-color: #222;
-    color: #fff;
+  transform: scale(1.03);
+  background: linear-gradient(to right, #43e97b, #38f9d7);
+  color: #000;
+  box-shadow: 0 0 15px #38f9d7;
 }
 
 .btn:disabled {
-    cursor: no-drop;
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 #next-btn {
-    background-color: #001e4d;
-    color: #fff;
-    font-weight: 500;
+  display: none;
+  margin-top: 30px;
+  padding: 14px 40px;
+  font-size: 17px;
+  background: linear-gradient(to right, #00c9ff, #92fe9d);
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 25px rgba(0, 255, 229, 0.4);
+}
+
+#next-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px #92fe9d;
+}
+
+/* Green-glow on correct */
+.correct {
+  background: linear-gradient(to right, #00f260, #0575e6) !important;
+  color: #fff !important;
+  box-shadow: 0 0 20px #00f260;
+}
+
+/* Red-shake on incorrect */
+.incorrect {
+  background: linear-gradient(to right, #e53935, #e35d5b) !important;
+  color: #fff !important;
+  animation: shake 0.35s ease-in-out;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app {
+    padding: 25px;
+    margin: 20px;
+  }
+
+  .app h1 {
+    font-size: 26px;
+  }
+
+  .btn {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  #next-btn {
+    width: 100%;
     font-size: 15px;
-    width: 150px;
-    border: none;
-    padding: 10px;
-    margin: 20px auto 0;
-    border-radius: 4px;
-    cursor: pointer;
-    display: none;
+    padding: 12px;
+  }
 }
